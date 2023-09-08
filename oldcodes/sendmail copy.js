@@ -91,7 +91,9 @@ async function main(cliente) {
       const newCsvStream = fs.createWriteStream(newCsvFilePath);
       newCsvStream.write('URL,pageTitle,titleSource,titlesIguais,Data\n');
       results.forEach((result) => {
-        newCsvStream.write(`${result.url},${result.pageTitle},${result.titleSource},${result.titlesIguais},${today}\n`);
+        if(result.titlesIguais==="Não"){
+          newCsvStream.write(`${result.url},${result.pageTitle},${result.titleSource},${result.titlesIguais},${today}\n`);
+        }
       });
       newCsvStream.end();
 
