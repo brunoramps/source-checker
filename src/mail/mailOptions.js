@@ -7,10 +7,14 @@ async function getMailOptions(cliente, emailAnalista, qtdErros, newCsvFilePath, 
     if(porcentagemErros>=50){
       subject = `🚨 ATENÇÃO! ${qtdErros} erros foram encontrados na verificação do código-fonte de ${cliente}`    
     } else {
-      if(qtdErros>0){
+      if(qtdErros>1){
         subject = `😱 Eita! ${qtdErros} erros encontrados na verificação do código-fonte de ${cliente}`            
       }else{
-        subject = `😎 Uhuu! Nenhum erro foi encontrado na verificação de código-fonte de ${cliente}`
+        if(qtdErros==1){
+          subject = `😱 Eita! ${qtdErros} erro foi encontrado na verificação do código-fonte de ${cliente}`
+        }else{
+          subject = `😎 Uhuu! Nenhum erro foi encontrado na verificação de código-fonte de ${cliente}`
+        }
       }
     }
   }
