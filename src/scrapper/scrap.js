@@ -22,11 +22,12 @@ async function scrapData(urls){
         try {          
           console.log(`[${contador++}/${urls.length}]: ${url}`);
           //Navegando até a URL
-          try {
+          await page.goto(url, { waitUntil: 'networkidle0' });            
+          /*try {
             await page.goto(url, { waitUntil: 'networkidle0' });            
           } catch (error) {
             console.log(`Erro no puppeteer: `, error);
-          }
+          }*/
           // Pegando o title renderizado pelo puppeteer
           const title = await page.title();
 
@@ -34,7 +35,7 @@ async function scrapData(urls){
             const { data } = await axios.get(url);
             $ = cheerio.load(data);            
           } catch (err) {
-            console.error("Error response:");
+            //Se der erro, a página retorna um html em err.response.data, então não há necessidade de colocar a URL na fila de novo
             $ = cheerio.load("Erro no axios: ", err.response.data); //console.error(err.response.data);    // *** //console.error(err.response.status);  // *** //console.error(err.response.headers); // ***            
           }
 
@@ -46,8 +47,10 @@ async function scrapData(urls){
           results.push(result);
           //console.log(`[${contador-1}/${urls.length}]: Dados coletados`);
         } catch (error) {
-          results.push({url, pageTitle: `erro`, titleSource: `erro`});
+          //results.push({url, pageTitle: `erro`, titleSource: `erro`});
           console.error(`Erro ao acessar a URL ${url}: ${error}`);
+          urls.push(url);
+          console.log(`Url adicionada novamente à fila`)
         }
       }
 

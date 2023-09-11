@@ -6,6 +6,9 @@ async function getEmailAnalista(cliente){
         },
         hugo : {
           "email" : "hugo.iwaasa@webart.com.br"
+        },
+        yasmim : {
+          "email" : "yasmim.novais@webart.com.br"
         }
       }
 
@@ -28,11 +31,25 @@ async function getEmailAnalista(cliente){
           break;
         case "uplips":
           emailAnalista = analistas.hugo.email
+          break;
         case "vivabeauty":
           emailAnalista = analistas.hugo.email
           break;
         case "viaaroma":
-          emailAnalista = analistas.bruno.email 
+          emailAnalista = analistas.bruno.email
+          break;
+        case "bianco":
+          emailAnalista = analistas.yasmim.email
+          break;
+        case "casa":
+          emailAnalista = analistas.yasmim.email
+          break;
+        case "mori":
+          emailAnalista = analistas.yasmim.email
+          break;
+        case "mith":
+          emailAnalista = analistas.yasmim.email
+          break;
         default:
           break;
       }
