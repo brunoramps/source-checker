@@ -16,7 +16,6 @@ async function main(cliente) {
       }
     })
     .on('end', async () => {
-
       //Realizando coleta de dados
       const results = await scrapData(urls);
       // Escrevendo os resultados em um novo arquivo CSV
@@ -25,7 +24,5 @@ async function main(cliente) {
       sendMail(cliente, newCsv.newCsvFilePath, newCsv.qtdErros, results.length);
     });
 }
-
-//main();
 
 exports.main = main;

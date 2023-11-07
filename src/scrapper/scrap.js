@@ -22,7 +22,7 @@ async function scrapData(urls){
         try {          
           console.log(`[${contador++}/${urls.length}]: ${url}`);
           //Navegando até a URL
-          await page.goto(url, { waitUntil: 'networkidle0' });            
+          await page.goto(url, { waitUntil: 'domcontentloaded' });            
           /*try {
             await page.goto(url, { waitUntil: 'networkidle0' });            
           } catch (error) {
