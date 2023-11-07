@@ -22,12 +22,7 @@ async function scrapData(urls){
         try {          
           console.log(`[${contador++}/${urls.length}]: ${url}`);
           //Navegando até a URL
-          await page.goto(url, { waitUntil: 'domcontentloaded' });            
-          /*try {
-            await page.goto(url, { waitUntil: 'networkidle0' });            
-          } catch (error) {
-            console.log(`Erro no puppeteer: `, error);
-          }*/
+          await page.goto(url, { waitUntil: 'domcontentloaded' });
           // Pegando o title renderizado pelo puppeteer
           const title = await page.title();
 
@@ -44,8 +39,7 @@ async function scrapData(urls){
           // Salvando os dados em um objeto
           const result = { url, pageTitle: title, titleSource };
           // Salvando o objeto no array
-          results.push(result);
-          //console.log(`[${contador-1}/${urls.length}]: Dados coletados`);
+          results.push(result);          
         } catch (error) {
           //results.push({url, pageTitle: `erro`, titleSource: `erro`});
           console.error(`Erro ao acessar a URL ${url}: ${error}`);

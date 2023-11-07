@@ -6,8 +6,8 @@ async function createTransport(){
         port: 465,
         secure: true,
         auth: {
-          user: 'bruno.ramos@webart.com.br',
-          pass: 'dpsotytmlpzepluu'
+          user: 'seu-email-aqui',
+          pass: 'coloque-a-senha-de-aplicativo-aqui'
         },
         tls: {
           rejectUnauthorized: false
