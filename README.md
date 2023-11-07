@@ -3,7 +3,8 @@
  - Com os dados coletados, analisa a porcentagem de erros encontrados e envia por e-mail para o analista do cliente o arquivo .csv contendo o resultado da análise e um título informando sobre os erros encontrados.
 
 # 1. Configurar o e-mail de envio
-- Primeiro, você deverá entrar nas configurações da sua conta de e-mail (no caso, usamos o gmail) e deverá pegar as credenciais de aplicativo seguro e preencher seu e-mail e sua senha de aplicativo dentro do arquivo "transporter.js" que está na pasta mail
+- Primeiro, você deverá entrar nas configurações da sua conta de e-mail (no caso, usamos o gmail) e deverá pegar as credenciais de app e preencher seu e-mail e sua senha de app dentro do arquivo "transporter.js" que está na pasta mail.
+- Aqui tem um tutorial: https://gestaopro.com.br/manual-sistema-gestaopro-post/como-habilitar-o-gmail-para-enviar-e-mail-por-aplicativos-externos
 
  # 2. Como definir o e-mail do analista
  - Como esta ferramenta foi desenvolvida para rodar em qualquer pc e não há conexão com banco de dados, você deverá configurar as informações dos analistas dentro da pasta "mail", no arquivo analista.js
