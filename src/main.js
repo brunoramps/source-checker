@@ -1,3 +1,4 @@
+const path = require('path');
 const fs = require('fs');
 const csvParser = require('csv-parser');
 const { sendMail } = require('./mail/sendmail');
@@ -6,9 +7,12 @@ const { scrapData } = require('./scrapper/scrap');
 
 async function main(cliente) {
   const urls = [];
-  
+
+  // Obtendo o caminho absoluto do arquivo CSV
+  const csvFilePath = path.resolve(__dirname, '../arquivos', `${cliente}.csv`);
+
   // Lendo o arquivo CSV e coletando as URLs
-  fs.createReadStream(`arquivos/${cliente}.csv`)
+  fs.createReadStream(csvFilePath)
     .pipe(csvParser())
     .on('data', (data) => {
       if (data.url) {
@@ -19,9 +23,9 @@ async function main(cliente) {
       //Realizando coleta de dados
       const results = await scrapData(urls);
       // Escrevendo os resultados em um novo arquivo CSV
-      const newCsv = await gravarCsv(cliente, results);
+      //const newCsv = await gravarCsv(cliente, results);
       //Enviando o e-mail
-      sendMail(cliente, newCsv.newCsvFilePath, newCsv.qtdErros, results.length);
+      //sendMail(cliente, newCsv.newCsvFilePath, newCsv.qtdErros, results.length);
     });
 }
 
